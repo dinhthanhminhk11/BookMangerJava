@@ -127,8 +127,6 @@ public class KindOfBookActivity extends AppCompatActivity implements KindOfBookA
 
     @Override
     public void onEdit(KindOfBook kindOfBook, int position) {
-
-
         final Dialog dialog = new Dialog(this);
         dialog.setCancelable(false);
         dialog.setContentView(R.layout.dialogaddkindofbook);
@@ -185,9 +183,6 @@ public class KindOfBookActivity extends AppCompatActivity implements KindOfBookA
 
     @Override
     public void onDelete(KindOfBook kindOfBook, int position) {
-
-        Log.e("MinhCheck", kindOfBook.get_id());
-
         AlertDialog dialog = new AlertDialog.Builder(this).setTitle("Notification").setMessage("\n" + "Are you sure you want to remove").setPositiveButton("Ok", null).setNegativeButton("Cancel", null).show();
         Button positiveButton = dialog.getButton(AlertDialog.BUTTON_POSITIVE);
         positiveButton.setOnClickListener(new View.OnClickListener() {

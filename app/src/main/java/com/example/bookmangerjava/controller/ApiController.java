@@ -3,10 +3,13 @@ package com.example.bookmangerjava.controller;
 import com.example.bookmangerjava.api.ApiService;
 import com.example.bookmangerjava.constant.ApiCallback;
 import com.example.bookmangerjava.constant.RetrofitRequest;
+import com.example.bookmangerjava.model.Book;
 import com.example.bookmangerjava.model.KindOfBook;
 import com.example.bookmangerjava.model.User;
+import com.example.bookmangerjava.model.response.BodyBookResponse;
 import com.example.bookmangerjava.model.response.BodyKindOfBookResponse;
 import com.example.bookmangerjava.model.response.BodyLoginResponse;
+import com.example.bookmangerjava.model.response.BodyResponseAddBook;
 import com.example.bookmangerjava.model.response.BodyResponseAddKindOfBook;
 
 import java.util.List;
@@ -107,6 +110,78 @@ public class ApiController {
 
             @Override
             public void onFailure(Call<BodyResponseAddKindOfBook> call, Throwable t) {
+                callback.onError(t);
+            }
+        });
+    }
+
+    public void updateBook(String id, Book book, final ApiCallback<BodyResponseAddBook> callback) {
+        apiService.updateBook(id, book).enqueue(new Callback<BodyResponseAddBook>() {
+            @Override
+            public void onResponse(Call<BodyResponseAddBook> call, Response<BodyResponseAddBook> response) {
+                if (response.isSuccessful()) {
+                    callback.onSuccess(response.body());
+                } else {
+                    callback.onError(new Exception("Failed to fetch data"));
+                }
+            }
+
+            @Override
+            public void onFailure(Call<BodyResponseAddBook> call, Throwable t) {
+                callback.onError(t);
+            }
+        });
+    }
+
+    public void getListBook(final ApiCallback<BodyBookResponse> callback) {
+        apiService.getListBook().enqueue(new Callback<BodyBookResponse>() {
+            @Override
+            public void onResponse(Call<BodyBookResponse> call, Response<BodyBookResponse> response) {
+                if (response.isSuccessful()) {
+                    callback.onSuccess(response.body());
+                } else {
+                    callback.onError(new Exception("Failed to fetch data"));
+                }
+            }
+
+            @Override
+            public void onFailure(Call<BodyBookResponse> call, Throwable t) {
+                callback.onError(t);
+            }
+        });
+    }
+
+    public void addBook(Book book, final ApiCallback<BodyResponseAddBook> callback) {
+        apiService.addBook(book).enqueue(new Callback<BodyResponseAddBook>() {
+            @Override
+            public void onResponse(Call<BodyResponseAddBook> call, Response<BodyResponseAddBook> response) {
+                if (response.isSuccessful()) {
+                    callback.onSuccess(response.body());
+                } else {
+                    callback.onError(new Exception("Failed to fetch data"));
+                }
+            }
+
+            @Override
+            public void onFailure(Call<BodyResponseAddBook> call, Throwable t) {
+                callback.onError(t);
+            }
+        });
+    }
+
+    public void deleteBook(String id, final ApiCallback<BodyResponseAddBook> callback) {
+        apiService.deleteBook(id).enqueue(new Callback<BodyResponseAddBook>() {
+            @Override
+            public void onResponse(Call<BodyResponseAddBook> call, Response<BodyResponseAddBook> response) {
+                if (response.isSuccessful()) {
+                    callback.onSuccess(response.body());
+                } else {
+                    callback.onError(new Exception("Failed to fetch data"));
+                }
+            }
+
+            @Override
+            public void onFailure(Call<BodyResponseAddBook> call, Throwable t) {
                 callback.onError(t);
             }
         });
