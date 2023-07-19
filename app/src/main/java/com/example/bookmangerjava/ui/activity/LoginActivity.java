@@ -62,7 +62,7 @@ public class LoginActivity extends AppCompatActivity {
                                 userClient.setImage(data.getData().getImage() == null ? "" : data.getData().getImage());
                                 userClient.setFullName(data.getData().getFullName());
                                 userClient.setUsername(data.getData().getUsername());
-
+                                userClient.setRole(data.getData().getRole());
                                 saveDataLogin();
                             }
                         }

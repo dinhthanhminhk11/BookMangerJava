@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -14,6 +15,7 @@ import com.example.bookmangerjava.databinding.FragmentHomeBinding;
 import com.example.bookmangerjava.model.UserClient;
 import com.example.bookmangerjava.ui.activity.BookActivity;
 import com.example.bookmangerjava.ui.activity.KindOfBookActivity;
+import com.example.bookmangerjava.ui.activity.MemberActivity;
 
 public class HomeFragment extends Fragment {
     private FragmentHomeBinding binding;
@@ -63,7 +65,7 @@ public class HomeFragment extends Fragment {
         binding.idMember.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                startActivity(new Intent(getActivity(), MemberActivity.class));
             }
         });
 
