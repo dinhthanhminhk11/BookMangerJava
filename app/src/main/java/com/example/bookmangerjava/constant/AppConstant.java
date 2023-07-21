@@ -6,4 +6,6 @@ public interface AppConstant {
     String LOGIN_USERNAME = "LOGIN_USERNAME";
     String LOGIN_PASSWORD = "LOGIN_PASSWORD";
     String LOGIN_SAVE = "LOGIN_SAVE";
+    String USER = "USER";
+
 }

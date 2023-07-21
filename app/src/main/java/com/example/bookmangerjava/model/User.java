@@ -2,7 +2,9 @@ package com.example.bookmangerjava.model;
 
 import com.google.gson.annotations.SerializedName;
 
-public class User {
+import java.io.Serializable;
+
+public class User implements Serializable {
 
     @SerializedName("id")
     private String id;
@@ -16,9 +18,16 @@ public class User {
     private String password;
     @SerializedName("role")
     private int role;
+
     public User(String username, String password) {
         this.username = username;
         this.password = password;
+    }
+
+    public User(String fullName, String image, String username) {
+        this.fullName = fullName;
+        this.image = image;
+        this.username = username;
     }
 
     public String getId() {

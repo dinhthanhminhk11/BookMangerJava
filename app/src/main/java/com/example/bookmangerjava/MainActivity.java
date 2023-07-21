@@ -1,9 +1,12 @@
 package com.example.bookmangerjava;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+import android.util.Log;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -12,12 +15,15 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 
 import com.example.bookmangerjava.databinding.ActivityMainBinding;
+import com.example.bookmangerjava.ui.activity.AddLoanSlipActivity;
+import com.example.bookmangerjava.ui.activity.LoanSlipActivity;
 import com.example.bookmangerjava.ui.fragment.BarChartFragment;
 import com.example.bookmangerjava.ui.fragment.HomeFragment;
 import com.example.bookmangerjava.ui.fragment.ProfileFragment;
 import com.example.bookmangerjava.ui.fragment.TopMostFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
+import java.util.Date;
 import java.util.HashMap;
 public class MainActivity extends AppCompatActivity {
     private ActivityMainBinding binding;
@@ -42,6 +48,13 @@ public class MainActivity extends AppCompatActivity {
                     currentFragmentId = itemId;
                 }
                 return true;
+            }
+        });
+
+        binding.imageViewAddIcon.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this, AddLoanSlipActivity.class));
             }
         });
 

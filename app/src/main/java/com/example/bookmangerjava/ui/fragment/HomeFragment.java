@@ -15,6 +15,7 @@ import com.example.bookmangerjava.databinding.FragmentHomeBinding;
 import com.example.bookmangerjava.model.UserClient;
 import com.example.bookmangerjava.ui.activity.BookActivity;
 import com.example.bookmangerjava.ui.activity.KindOfBookActivity;
+import com.example.bookmangerjava.ui.activity.LoanSlipActivity;
 import com.example.bookmangerjava.ui.activity.MemberActivity;
 
 public class HomeFragment extends Fragment {
@@ -73,6 +74,13 @@ public class HomeFragment extends Fragment {
             @Override
             public void onClick(View v) {
 
+            }
+        });
+
+        binding.idloanslip.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getActivity(), LoanSlipActivity.class));
             }
         });
     }

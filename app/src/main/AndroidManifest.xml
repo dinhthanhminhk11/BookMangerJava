@@ -17,11 +17,23 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
+            android:name=".ui.activity.AddLoanSlipActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.activity.LoanSlipActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.activity.ChangePassActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.activity.LibrarianActivity"
+            android:exported="true" />
+        <activity
             android:name=".ui.activity.MemberActivity"
             android:exported="false" />
         <activity
             android:name=".ui.activity.BookActivity"
-            android:exported="true"></activity>
+            android:exported="true" />
         <activity
             android:name=".ui.activity.KindOfBookActivity"
             android:exported="true" />

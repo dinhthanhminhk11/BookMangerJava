@@ -16,6 +16,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.bookmangerjava.R;
 import com.example.bookmangerjava.databinding.ItemBookBinding;
 import com.example.bookmangerjava.model.Book;
+import com.example.bookmangerjava.model.User;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 
 import java.util.ArrayList;
@@ -148,9 +149,15 @@ public class BookAdapter extends RecyclerView.Adapter<BookAdapter.ViewHolder> {
     }
 
     public void deleteItem(int position) {
-        if (position >= 0 && position < data.size()) {
-            data.remove(position);
-            filterData();
+        if (position >= 0 && position < filteredData.size()) {
+            Book userToRemove = filteredData.get(position);
+            int indexInData = data.indexOf(userToRemove);
+
+            if (indexInData >= 0) {
+                data.remove(indexInData);
+                filteredData.remove(position);
+                notifyItemRemoved(position);
+            }
         }
     }
 }

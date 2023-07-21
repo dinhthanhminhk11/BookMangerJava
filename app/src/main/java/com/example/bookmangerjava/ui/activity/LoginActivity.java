@@ -63,6 +63,7 @@ public class LoginActivity extends AppCompatActivity {
                                 userClient.setFullName(data.getData().getFullName());
                                 userClient.setUsername(data.getData().getUsername());
                                 userClient.setRole(data.getData().getRole());
+                                userClient.setPassword(binding.etPassword.getText().toString());
                                 saveDataLogin();
                             }
                         }

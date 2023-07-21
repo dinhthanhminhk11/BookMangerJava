@@ -1,12 +1,16 @@
 package com.example.bookmangerjava.model;
 
-public class UserClient {
+import java.io.Serializable;
+
+public class UserClient implements Serializable {
     private String id;
     private String fullName;
     private String image;
     private String username;
+    private String password;
     private int role;
     private static UserClient instance = null;
+
     protected UserClient() {
     }
 
@@ -55,5 +59,13 @@ public class UserClient {
 
     public void setRole(int role) {
         this.role = role;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 }
