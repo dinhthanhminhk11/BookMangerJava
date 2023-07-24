@@ -6,12 +6,15 @@ public class LoanSlip {
     private String idBook;
     private int price;
     private long borrowedDate;
-    private int payDay;
+    private long payDay;
+    private long actualPaymentDate;
     private boolean isPay;
     private String _id;
     private int __v;
 
-    public LoanSlip(String nameUser, String phoneUser, String idBook, int price, int payDay) {
+    private String nameBook;
+
+    public LoanSlip(String nameUser, String phoneUser, String idBook, int price, long payDay) {
         this.nameUser = nameUser;
         this.phoneUser = phoneUser;
         this.idBook = idBook;
@@ -39,7 +42,7 @@ public class LoanSlip {
         return borrowedDate;
     }
 
-    public int getPayDay() {
+    public long getPayDay() {
         return payDay;
     }
 
@@ -53,5 +56,13 @@ public class LoanSlip {
 
     public int get__v() {
         return __v;
+    }
+
+    public String getNameBook() {
+        return nameBook;
+    }
+
+    public long getActualPaymentDate() {
+        return actualPaymentDate;
     }
 }

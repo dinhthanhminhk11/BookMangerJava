@@ -11,8 +11,11 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import com.example.bookmangerjava.constant.ApiCallback;
+import com.example.bookmangerjava.controller.ApiController;
 import com.example.bookmangerjava.databinding.FragmentHomeBinding;
 import com.example.bookmangerjava.model.UserClient;
+import com.example.bookmangerjava.model.response.BodySizeHome;
 import com.example.bookmangerjava.ui.activity.BookActivity;
 import com.example.bookmangerjava.ui.activity.KindOfBookActivity;
 import com.example.bookmangerjava.ui.activity.LoanSlipActivity;
@@ -20,6 +23,7 @@ import com.example.bookmangerjava.ui.activity.MemberActivity;
 
 public class HomeFragment extends Fragment {
     private FragmentHomeBinding binding;
+    private ApiController apiController;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -37,6 +41,20 @@ public class HomeFragment extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
+        apiController.getSizeHome(new ApiCallback<BodySizeHome>() {
+            @Override
+            public void onSuccess(BodySizeHome data) {
+                binding.tsMember.setText(data.getData().getUser() + "");
+                binding.tsBook.setText(data.getData().getBook() + "");
+                binding.tsKindOfBook.setText(data.getData().getCategory() + "");
+                binding.tsLoanSlip.setText(data.getData().getLoanSlip() + "");
+            }
+
+            @Override
+            public void onError(Throwable t) {
+
+            }
+        });
     }
 
     private void initData() {
@@ -49,6 +67,7 @@ public class HomeFragment extends Fragment {
     }
 
     private void initView() {
+        apiController = new ApiController();
         binding.idKindofbook.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -84,4 +103,6 @@ public class HomeFragment extends Fragment {
             }
         });
     }
+
+
 }

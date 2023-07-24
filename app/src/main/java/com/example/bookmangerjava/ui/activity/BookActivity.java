@@ -5,6 +5,7 @@ import androidx.recyclerview.widget.GridLayoutManager;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
@@ -23,6 +24,7 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.bookmangerjava.MainActivity;
 import com.example.bookmangerjava.R;
 import com.example.bookmangerjava.constant.ApiCallback;
 import com.example.bookmangerjava.controller.ApiController;
@@ -284,7 +286,7 @@ public class BookActivity extends AppCompatActivity implements BookAdapter.Callb
 
     @Override
     public void onAdd(Book book, int position) {
-
+        startActivity(new Intent(BookActivity.this, AddLoanSlipActivity.class));
     }
 
     private void initToolbar() {

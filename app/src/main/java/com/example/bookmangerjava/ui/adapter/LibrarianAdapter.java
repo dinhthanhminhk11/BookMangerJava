@@ -113,8 +113,7 @@ public class LibrarianAdapter extends RecyclerView.Adapter<LibrarianAdapter.View
 
             if (indexInData >= 0) {
                 data.remove(indexInData);
-                filteredData.remove(position);
-                notifyItemRemoved(position);
+                filterData();
             }
         }
     }

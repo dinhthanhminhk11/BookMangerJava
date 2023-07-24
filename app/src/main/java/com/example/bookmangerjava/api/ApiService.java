@@ -3,14 +3,19 @@ package com.example.bookmangerjava.api;
 import com.example.bookmangerjava.model.Book;
 import com.example.bookmangerjava.model.KindOfBook;
 import com.example.bookmangerjava.model.LoanSlip;
+import com.example.bookmangerjava.model.TopMost;
 import com.example.bookmangerjava.model.User;
 import com.example.bookmangerjava.model.response.BodyBookResponse;
 import com.example.bookmangerjava.model.response.BodyKindOfBookResponse;
+import com.example.bookmangerjava.model.response.BodyListLoanSlip;
 import com.example.bookmangerjava.model.response.BodyLoanSlipResponse;
 import com.example.bookmangerjava.model.response.BodyLoginResponse;
 import com.example.bookmangerjava.model.response.BodyResponseAddBook;
 import com.example.bookmangerjava.model.response.BodyResponseAddKindOfBook;
+import com.example.bookmangerjava.model.response.BodySizeHome;
 import com.example.bookmangerjava.model.response.BodyUserListResponse;
+
+import java.util.List;
 
 import okhttp3.MultipartBody;
 import okhttp3.RequestBody;
@@ -54,12 +59,7 @@ public interface ApiService {
 
     @Multipart
     @POST("auth/register")
-    Call<BodyLoginResponse> register(
-            @Part("fullName") RequestBody fullName,
-            @Part("username") RequestBody username,
-            @Part("password") RequestBody password,
-            @Part MultipartBody.Part image
-    );
+    Call<BodyLoginResponse> register(@Part("fullName") RequestBody fullName, @Part("username") RequestBody username, @Part("password") RequestBody password, @Part MultipartBody.Part image);
 
     @GET("auth")
     Call<BodyUserListResponse> getListUser();
@@ -69,18 +69,11 @@ public interface ApiService {
 
     @Multipart
     @PATCH("auth/updateUser")
-    Call<BodyLoginResponse> updateUser(
-            @Part("fullName") RequestBody fullName,
-            @Part("username") RequestBody username,
-            @Part MultipartBody.Part image
-    );
+    Call<BodyLoginResponse> updateUser(@Part("fullName") RequestBody fullName, @Part("username") RequestBody username, @Part MultipartBody.Part image);
 
     @Multipart
     @PATCH("auth/updateUser")
-    Call<BodyLoginResponse> updateUserWithoutImage(
-            @Part("fullName") RequestBody fullName,
-            @Part("username") RequestBody username
-    );
+    Call<BodyLoginResponse> updateUserWithoutImage(@Part("fullName") RequestBody fullName, @Part("username") RequestBody username);
 
     @PATCH("auth/changePassword")
     Call<BodyLoginResponse> changePass(@Body User user);
@@ -90,4 +83,16 @@ public interface ApiService {
 
     @DELETE("loanslip/{id}")
     Call<BodyLoanSlipResponse> deleteLoanSlip(@Path("id") String id);
+
+    @GET("loanslip")
+    Call<BodyListLoanSlip> getListLoanSlip();
+
+    @PATCH("loanslip/updateStatus/{id}")
+    Call<BodyLoanSlipResponse> updateLoanSlip(@Path("id") String id);
+
+    @GET("sizeHome")
+    Call<BodySizeHome> getSizeHome();
+
+    @GET("getTopMost")
+    Call<List<TopMost>> getTopMost();
 }

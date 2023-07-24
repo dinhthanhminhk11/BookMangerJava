@@ -6,14 +6,17 @@ import com.example.bookmangerjava.constant.RetrofitRequest;
 import com.example.bookmangerjava.model.Book;
 import com.example.bookmangerjava.model.KindOfBook;
 import com.example.bookmangerjava.model.LoanSlip;
+import com.example.bookmangerjava.model.TopMost;
 import com.example.bookmangerjava.model.User;
 import com.example.bookmangerjava.model.request.RequestDeleteAccount;
 import com.example.bookmangerjava.model.response.BodyBookResponse;
 import com.example.bookmangerjava.model.response.BodyKindOfBookResponse;
+import com.example.bookmangerjava.model.response.BodyListLoanSlip;
 import com.example.bookmangerjava.model.response.BodyLoanSlipResponse;
 import com.example.bookmangerjava.model.response.BodyLoginResponse;
 import com.example.bookmangerjava.model.response.BodyResponseAddBook;
 import com.example.bookmangerjava.model.response.BodyResponseAddKindOfBook;
+import com.example.bookmangerjava.model.response.BodySizeHome;
 import com.example.bookmangerjava.model.response.BodyUserListResponse;
 
 import java.io.File;
@@ -340,6 +343,78 @@ public class ApiController {
 
             @Override
             public void onFailure(Call<BodyLoanSlipResponse> call, Throwable t) {
+                callback.onError(t);
+            }
+        });
+    }
+
+    public void getListLoanSlip(final ApiCallback<BodyListLoanSlip> callback) {
+        apiService.getListLoanSlip().enqueue(new Callback<BodyListLoanSlip>() {
+            @Override
+            public void onResponse(Call<BodyListLoanSlip> call, Response<BodyListLoanSlip> response) {
+                if (response.isSuccessful()) {
+                    callback.onSuccess(response.body());
+                } else {
+                    callback.onError(new Exception("Failed to fetch data"));
+                }
+            }
+
+            @Override
+            public void onFailure(Call<BodyListLoanSlip> call, Throwable t) {
+                callback.onError(t);
+            }
+        });
+    }
+
+    public void updateLoanSlip(String id, final ApiCallback<BodyLoanSlipResponse> callback) {
+        apiService.updateLoanSlip(id).enqueue(new Callback<BodyLoanSlipResponse>() {
+            @Override
+            public void onResponse(Call<BodyLoanSlipResponse> call, Response<BodyLoanSlipResponse> response) {
+                if (response.isSuccessful()) {
+                    callback.onSuccess(response.body());
+                } else {
+                    callback.onError(new Exception("Failed to fetch data"));
+                }
+            }
+
+            @Override
+            public void onFailure(Call<BodyLoanSlipResponse> call, Throwable t) {
+                callback.onError(t);
+            }
+        });
+    }
+
+    public void getSizeHome(final ApiCallback<BodySizeHome> callback) {
+        apiService.getSizeHome().enqueue(new Callback<BodySizeHome>() {
+            @Override
+            public void onResponse(Call<BodySizeHome> call, Response<BodySizeHome> response) {
+                if (response.isSuccessful()) {
+                    callback.onSuccess(response.body());
+                } else {
+                    callback.onError(new Exception("Failed to fetch data"));
+                }
+            }
+
+            @Override
+            public void onFailure(Call<BodySizeHome> call, Throwable t) {
+                callback.onError(t);
+            }
+        });
+    }
+
+    public void getTopMost(final ApiCallback<List<TopMost>> callback) {
+        apiService.getTopMost().enqueue(new Callback<List<TopMost>>() {
+            @Override
+            public void onResponse(Call<List<TopMost>> call, Response<List<TopMost>> response) {
+                if (response.isSuccessful()) {
+                    callback.onSuccess(response.body());
+                } else {
+                    callback.onError(new Exception("Failed to fetch data"));
+                }
+            }
+
+            @Override
+            public void onFailure(Call<List<TopMost>> call, Throwable t) {
                 callback.onError(t);
             }
         });

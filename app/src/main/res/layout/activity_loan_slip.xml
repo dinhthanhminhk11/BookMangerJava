@@ -41,7 +41,7 @@
             android:layout_height="wrap_content"
             android:layout_above="@+id/btnAddKindofbook"
             android:layout_below="@+id/etSearch"
-            android:layout_margin="20dp" />
+            android:layout_marginHorizontal="16dp" />
 
         <Button
             android:id="@+id/btnAddKindofbook"
@@ -73,7 +73,7 @@
             android:layout_marginBottom="20dp">
 
             <RadioButton
-                android:id="@+id/radiochuacha"
+                android:id="@+id/unpaid"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Unpaid"
@@ -81,7 +81,7 @@
                 app:buttonTint="@color/red" />
 
             <RadioButton
-                android:id="@+id/radiodacha"
+                android:id="@+id/paid"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Paid"

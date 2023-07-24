@@ -155,8 +155,7 @@ public class BookAdapter extends RecyclerView.Adapter<BookAdapter.ViewHolder> {
 
             if (indexInData >= 0) {
                 data.remove(indexInData);
-                filteredData.remove(position);
-                notifyItemRemoved(position);
+                filterData();
             }
         }
     }
