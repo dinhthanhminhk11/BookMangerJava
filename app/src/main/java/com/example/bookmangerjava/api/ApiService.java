@@ -12,6 +12,7 @@ import com.example.bookmangerjava.model.response.BodyLoanSlipResponse;
 import com.example.bookmangerjava.model.response.BodyLoginResponse;
 import com.example.bookmangerjava.model.response.BodyResponseAddBook;
 import com.example.bookmangerjava.model.response.BodyResponseAddKindOfBook;
+import com.example.bookmangerjava.model.response.BodyResponseRevenue;
 import com.example.bookmangerjava.model.response.BodySizeHome;
 import com.example.bookmangerjava.model.response.BodyUserListResponse;
 
@@ -28,6 +29,7 @@ import retrofit2.http.PATCH;
 import retrofit2.http.POST;
 import retrofit2.http.Part;
 import retrofit2.http.Path;
+import retrofit2.http.Query;
 
 public interface ApiService {
     @GET("category")
@@ -95,4 +97,7 @@ public interface ApiService {
 
     @GET("getTopMost")
     Call<List<TopMost>> getTopMost();
+
+    @GET("getCountReven")
+    Call<BodyResponseRevenue> getPopularBooks(@Query("startDate") long startDate, @Query("endDate") long endDate);
 }

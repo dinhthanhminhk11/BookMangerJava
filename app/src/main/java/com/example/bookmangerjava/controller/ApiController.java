@@ -16,6 +16,7 @@ import com.example.bookmangerjava.model.response.BodyLoanSlipResponse;
 import com.example.bookmangerjava.model.response.BodyLoginResponse;
 import com.example.bookmangerjava.model.response.BodyResponseAddBook;
 import com.example.bookmangerjava.model.response.BodyResponseAddKindOfBook;
+import com.example.bookmangerjava.model.response.BodyResponseRevenue;
 import com.example.bookmangerjava.model.response.BodySizeHome;
 import com.example.bookmangerjava.model.response.BodyUserListResponse;
 
@@ -415,6 +416,24 @@ public class ApiController {
 
             @Override
             public void onFailure(Call<List<TopMost>> call, Throwable t) {
+                callback.onError(t);
+            }
+        });
+    }
+
+    public void getRevenue(long startDate, long endDate, final ApiCallback<BodyResponseRevenue> callback) {
+        apiService.getPopularBooks(startDate, endDate).enqueue(new Callback<BodyResponseRevenue>() {
+            @Override
+            public void onResponse(Call<BodyResponseRevenue> call, Response<BodyResponseRevenue> response) {
+                if (response.isSuccessful()) {
+                    callback.onSuccess(response.body());
+                } else {
+                    callback.onError(new Exception("Failed to fetch data"));
+                }
+            }
+
+            @Override
+            public void onFailure(Call<BodyResponseRevenue> call, Throwable t) {
                 callback.onError(t);
             }
         });
